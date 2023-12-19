@@ -15,4 +15,4 @@ Ansible
 
 What I learned:
 - The difference in Ansible and Terraform - Terraform mainly behaving as an infrastructure provisioning tool and Ansible as a configuration and app deployment tool
-- How to use terraform with some basic commands and methodologies  
+- How to use terraform with some basic commands and methodologies 
