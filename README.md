@@ -1,4 +1,4 @@
-#Using Terraform and Ansible to set up apache server on a VM
+# Using Terraform and Ansible to set up apache server on a VM
 
 Here I used:
 
