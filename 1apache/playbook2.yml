@@ -1,0 +1,43 @@
+---
+- hosts: all
+  vars_files:
+    - variables
+  tasks:
+
+    - name: Installing httpd
+      package:
+        name: httpd
+        state: present
+
+    - name: Create document root
+      file: 
+        state: directory
+        dest: "{{ doc_root }}"
+
+    - name: New config file 
+      template:
+        src: ./varconf.j2
+        dest: /etc/httpd/conf.d/new_conf.conf
+
+    - name: Copy index file
+      copy:
+        src: ./index.html
+        dest: "{{ doc_root }}" 
+
+    - name: Web server start
+      service:
+        name: httpd
+        state: started
+        enabled: yes
+
+    - name: Adding firewall rule port
+      firewalld:
+        port: "{{ port_number }}/tcp"
+        permanent: yes
+        state: enabled
+        immediate: yes
+
+    - name: Server restart
+      service:
+        name: httpd
+        state: restarted        
